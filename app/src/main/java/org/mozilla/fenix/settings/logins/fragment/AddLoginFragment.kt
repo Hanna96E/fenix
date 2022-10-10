@@ -258,24 +258,9 @@ class AddLoginFragment : Fragment(R.layout.fragment_add_login) {
     }
 
     private fun updateUsernameField() {
-        val currentValue = binding.usernameText.text.toString()
         val layout = binding.inputLayoutUsername
         val clearButton = binding.clearUsernameTextButton
         when {
-            currentValue.isEmpty() && usernameChanged -> {
-                // Invalid username because it's empty (although this is not true when editing logins)
-                validUsername = false
-                layout.error = context?.getString(R.string.saved_login_username_required)
-                layout.setErrorIconDrawable(R.drawable.mozac_ic_warning_with_bottom_padding)
-                layout.setErrorIconTintList(
-                    ColorStateList.valueOf(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.fx_mobile_text_color_warning,
-                        ),
-                    ),
-                )
-            }
             duplicateLogin != null -> {
                 // Invalid username because it's a dupe of another login
                 validUsername = false
